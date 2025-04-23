@@ -13,7 +13,7 @@ COPY ./poetry.lock /code/poetry.lock
 RUN pip install --no-cache-dir --upgrade poetry
 RUN pip install httpx
 RUN poetry config virtualenvs.create false
-RUN poetry install --no-dev --no-interaction --no-ansi
+RUN poetry install
 COPY main.py /code/main.py
 COPY speller_agent.py /code/speller_agent.py
 COPY memory_config.py /code/memory_config.py
@@ -23,6 +23,7 @@ COPY instructions.txt /code/instructions.txt
 RUN mkdir -p /code/call_transcripts
 RUN mkdir -p /code/db
 
+# --no-dev --no-interaction --no-ansi
 # Copy the utils directory (and its contents) into the container
 COPY ./utils /code/utils
 
